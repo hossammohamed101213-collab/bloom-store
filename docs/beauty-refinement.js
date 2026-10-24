@@ -1,0 +1,4 @@
+import {t} from './beauty-data.js';
+const preference=matchMedia('(prefers-reduced-motion: reduce)');let paused=preference.matches;window.web2050MotionPaused=paused;
+function sync(){document.body.classList.toggle('reduced-motion',paused);window.web2050MotionPaused=paused;const b=document.querySelector('#motion-button');if(b){b.textContent=paused?'▷ '+t('تشغيل الحركة','Enable motion'):'Ⅱ '+t('تقليل الحركة','Reduce motion');b.setAttribute('aria-pressed',String(paused));}document.dispatchEvent(new CustomEvent('web2050:motion',{detail:{paused}}));}
+preference.addEventListener('change',e=>{paused=e.matches;sync();});document.addEventListener('click',e=>{if(e.target.closest('#motion-button')){paused=!paused;sync();}});document.addEventListener('web2050:route',sync);sync();import('./depth-scenes.js').then(m=>m.startDepth()).catch(e=>{console.error('3D unavailable',e);document.body.classList.add('no-depth');});
