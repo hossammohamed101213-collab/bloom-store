@@ -1,0 +1,12 @@
+{
+  "name": "bloom-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BLOOM bilingual interactive beauty storefront preview",
+  "scripts": {
+    "start": "node tools/serve.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
